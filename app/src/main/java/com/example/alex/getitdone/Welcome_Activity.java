@@ -20,6 +20,7 @@ public class Welcome_Activity extends AppCompatActivity {
     }
 
     public void goToCreateTask(View button){
-        Intent i = new Intent(this. )
+        Intent i = new Intent(this, activity_add_task.class );
+        startActivity(i);
     }
 }
