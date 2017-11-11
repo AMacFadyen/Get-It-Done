@@ -16,7 +16,7 @@ import static android.os.Build.VERSION_CODES.O;
  * Created by Alex on 10/11/2017.
  */
 
-public class DBHelper extends SQLiteOpenHelper {
+public class DBHelper extends SQLiteOpenHelper{
 
     public static final String DATABASE_NAME = "tasks.db";
     public static final String TASKS_TABLE_NAME = "tasks";
@@ -45,7 +45,6 @@ public class DBHelper extends SQLiteOpenHelper {
         cv.put(TASKS_COLUMN_DETAILS, details);
         cv.put(TASKS_COLUMN_CATEGORY, category);
         db.insert(TASKS_TABLE_NAME, null, cv);
-
         return true;
     }
 
@@ -53,8 +52,10 @@ public class DBHelper extends SQLiteOpenHelper {
         ArrayList<Task> tasks = new ArrayList<>();
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery("SELECT * FROM " + TASKS_TABLE_NAME, null);
-        while(cursor.moveToNext()){
-            int id = cursor.getInt(cursor.getColumnIndex(TASKS_COLUMN_ID));
+
+        while(cursor.moveToNext())
+        {
+            Integer id = cursor.getInt(cursor.getColumnIndex(TASKS_COLUMN_ID));
             String name = cursor.getString(cursor.getColumnIndex(TASKS_COLUMN_NAME));
             String details = cursor.getString(cursor.getColumnIndex(TASKS_COLUMN_DETAILS));
             String category = cursor.getString(cursor.getColumnIndex(TASKS_COLUMN_CATEGORY));

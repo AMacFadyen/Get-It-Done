@@ -14,10 +14,11 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="Most Recent Task"
-        android:layout_marginTop="285dp"
+        android:layout_marginTop="561dp"
         android:layout_marginLeft="8dp"
         app:layout_constraintRight_toLeftOf="@+id/taskListBttn"
-        android:layout_marginRight="8dp" />
+        android:layout_marginRight="8dp"
+        app:layout_constraintHorizontal_bias="0.329" />
 
     <Button
         android:id="@+id/button2"

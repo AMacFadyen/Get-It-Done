@@ -14,7 +14,7 @@ import static com.example.alex.getitdone.DBHelper.TASKS_TABLE_NAME;
  */
 
 public class Task {
-    private int id;
+    private Integer id;
     private String name;
     private String details;
     private String category;
