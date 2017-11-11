@@ -11,17 +11,15 @@ import java.util.ArrayList;
 
 public class TasksListActivity extends AppCompatActivity {
 
-    DBHelper dbHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.tasks_list);
-        dbHelper = new DBHelper(this);
-
+        DBHelper dbHelper = new DBHelper(this);
         ArrayList<Task> taskList = dbHelper.all();
 
-        TasksListAdapter taskAdapter = new TasksListAdapter(this,taskList);
+        TasksListAdapter taskAdapter = new TasksListAdapter(this, taskList);
         ListView listView = (ListView)findViewById(R.id.task_list);
         listView.setAdapter(taskAdapter);
     }
@@ -32,6 +30,7 @@ public class TasksListActivity extends AppCompatActivity {
         i.putExtra("name", task.getName());
         i.putExtra("details", task.getDetails());
         i.putExtra("category", task.getCategory());
+        i.putExtra("id", task.getId());
         startActivity(i);
     }
 

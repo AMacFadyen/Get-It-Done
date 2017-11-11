@@ -33,6 +33,7 @@ public class TasksListAdapter extends ArrayAdapter<Task> {
         details.setText(currentTask.getCategory());
 
         listItemView.setTag(currentTask);
+
         return listItemView;
     }
 }

@@ -11,7 +11,6 @@ public class activity_add_task extends AppCompatActivity {
     EditText nameText;
     EditText categoryText;
     EditText detailsText;
-    DBHelper dbHelper;
 
 
     @Override
@@ -24,13 +23,12 @@ public class activity_add_task extends AppCompatActivity {
     }
 
     public void addTask(View button){
-        dbHelper = new DBHelper(this);
+        DBHelper dbHelper = new DBHelper(this);
         String name = nameText.getText().toString();
         String details = detailsText.getText().toString();
         String category = categoryText.getText().toString();
-        Task task = new Task(name, details, category);
-        task.save(dbHelper);
-        Intent i = new Intent(this, TasksListActivity.class );
+        dbHelper.save(name, details, category);
+        Intent i = new Intent(this, TasksListActivity.class);
         startActivity(i);
         }
 }

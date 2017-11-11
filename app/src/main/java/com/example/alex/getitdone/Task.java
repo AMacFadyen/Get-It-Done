@@ -51,19 +51,23 @@ public class Task {
         return category;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setDetails(String details) {
+        this.details = details;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+
     //    public String getDueDate() {
 //        return dueDate;
 //    }
 
-    public boolean save(DBHelper dbHelper){
-        SQLiteDatabase db = dbHelper.getWritableDatabase();
-        ContentValues cv = new ContentValues();
-        cv.put(TASKS_COLUMN_NAME, this.name);
-        cv.put(TASKS_COLUMN_DETAILS, this.details);
-        cv.put(TASKS_COLUMN_CATEGORY, this.category);
-        db.insert(TASKS_TABLE_NAME, null, cv);
 
-        return true;
-    }
 
 }
