@@ -8,6 +8,12 @@ public class TaskActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_task_details);
+        setContentView(R.layout.activity_task);
+
+        Bundle extras = getIntent().getExtras();
+        String name = extras.getString("name");
+        String details = extras.getString("details");
+        String category = extras.getString("category");
+        
     }
 }

@@ -30,6 +30,7 @@ public class TasksListAdapter extends ArrayAdapter<Task> {
         TextView details = (TextView)listItemView.findViewById(R.id.taskDetails);
         details.setText(currentTask.getDetails());
         TextView category = (TextView)listItemView.findViewById(R.id.taskCategory);
+        details.setText(currentTask.getCategory());
 
         listItemView.setTag(currentTask);
         return listItemView;

@@ -18,4 +18,8 @@ public class Welcome_Activity extends AppCompatActivity {
         Intent i = new Intent(this, TasksListActivity.class);
         startActivity(i);
     }
+
+    public void goToCreateTask(View button){
+        Intent i = new Intent(this. )
+    }
 }

@@ -18,10 +18,11 @@ public class Task {
 //        this.dueDate = dueDate;
     }
 
-    public Task(int id, String name, String details) {
+    public Task(int id, String name, String details, String category) {
         this.id = id;
         this.name = name;
         this.details = details;
+        this.category = category;
 //        this.dueDate = dueDate;
     }
 
