@@ -10,6 +10,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 
+import static android.R.attr.id;
+import static android.R.attr.name;
 import static android.os.Build.VERSION_CODES.O;
 
 /**
@@ -69,10 +71,17 @@ public class DBHelper extends SQLiteOpenHelper{
 
     public void delete(Integer id){
         SQLiteDatabase db = this.getWritableDatabase();
-        String selection = " id=?";
+        String selection = " id = ?";
         String[] values = {id.toString()};
         db.delete(TASKS_TABLE_NAME, selection, values);
     }
+
+//    public void update(Integer id){
+//        SQLiteDatabase db = this.getWritableDatabase();
+//        String selected = " id=?";
+//        String[] values = {id.toString()};
+//        db.update(TASKS_TABLE_NAME, selected, values);
+//    }
 
 
 
