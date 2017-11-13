@@ -76,6 +76,9 @@ public class TaskActivity extends AppCompatActivity {
     public void editTask(View button){
         Intent i = new Intent(this, activity_edit_task.class);
         Integer id = extras.getInt("id");
+        String name = extras.getString("name");
+        String details = extras.getString("details");
+        String category = extras.getString("category");
         i.putExtra("details", details);
         i.putExtra("category", category);
         i.putExtra("name", name);

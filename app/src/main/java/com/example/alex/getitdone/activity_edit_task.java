@@ -20,9 +20,20 @@ public class activity_edit_task extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_task);
+
+        Intent i = getIntent();
+        Bundle extras = i.getExtras();
+        String startName = extras.getString("name");
+        String startDetails = extras.getString("details");
+        String startCategory = extras.getString("category");
+
         updateName = (EditText)findViewById(R.id.editTaskNameInput);
         updateCategory = (EditText)findViewById(R.id.editTaskCategoryInput);
         updateDetails = (EditText)findViewById(R.id.editTaskDetailsInput);
+        updateName.setText(startName);
+        updateCategory.setText(startCategory);
+        updateDetails.setText(startDetails);
+
     }
 
     public void updateTask(View button){

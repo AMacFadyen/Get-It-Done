@@ -27,13 +27,14 @@ public class DBHelper extends SQLiteOpenHelper{
     public static final String TASKS_COLUMN_NAME = "name";
     public static final String TASKS_COLUMN_DETAILS = "details";
     public static final String TASKS_COLUMN_CATEGORY = "category";
+    public static final String TASKS_COLUMN_STATUS = "status";
 //    public static final String TASKS_COLUMN_DUE_DATE = "dueDate";
 
     public DBHelper(Context context) {super(context, DATABASE_NAME, null, 1);
     }
 
     public void onCreate(SQLiteDatabase db){
-        db.execSQL("CREATE TABLE " + TASKS_TABLE_NAME + " (id INTEGER primary key autoincrement, name TEXT, details TEXT, category TEXT)");
+        db.execSQL("CREATE TABLE " + TASKS_TABLE_NAME + " (id INTEGER primary key autoincrement, name TEXT, details TEXT, category TEXT, status BOOLEAN)");
     }
 
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion){
@@ -41,12 +42,13 @@ public class DBHelper extends SQLiteOpenHelper{
         onCreate(db);
     }
 
-    public boolean save(String name, String details, String category){
+    public boolean save(String name, String details, String category, String status){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
         cv.put(TASKS_COLUMN_NAME, name);
         cv.put(TASKS_COLUMN_DETAILS, details);
         cv.put(TASKS_COLUMN_CATEGORY, category);
+        cv.put(TASKS_COLUMN_STATUS, status);
         db.insert(TASKS_TABLE_NAME, null, cv);
         return true;
     }
@@ -62,7 +64,8 @@ public class DBHelper extends SQLiteOpenHelper{
             String name = cursor.getString(cursor.getColumnIndex(TASKS_COLUMN_NAME));
             String details = cursor.getString(cursor.getColumnIndex(TASKS_COLUMN_DETAILS));
             String category = cursor.getString(cursor.getColumnIndex(TASKS_COLUMN_CATEGORY));
-            Task task = new Task(id, name, details, category);
+            Boolean status = cursor.getInt(cursor.getColumnIndex(TASKS_COLUMN_STATUS))>0;
+            Task task = new Task(id, name, details, category, status);
             tasks.add(task);
 //            String dueDate = cursor.getString(cursor.getColumnIndex(TASKS_COLUMN_DUE_DATE));
         }
@@ -77,12 +80,13 @@ public class DBHelper extends SQLiteOpenHelper{
         db.delete(TASKS_TABLE_NAME, selection, values);
     }
 
-    public void update(Integer id, String name, String details, String category){
+    public void update(Integer id, String name, String details, String category, Boolean status){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
         cv.put(TASKS_COLUMN_NAME, name);
         cv.put(TASKS_COLUMN_DETAILS, details);
         cv.put(TASKS_COLUMN_CATEGORY, category);
+        cv.put(TASKS_COLUMN_STATUS, status);
 
         String selection = " id=?";
         String[] values = new String[] {String.valueOf(id)};

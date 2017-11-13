@@ -18,20 +18,23 @@ public class Task {
     private String name;
     private String details;
     private String category;
+    private Boolean status;
 //    private Date dueDate;
 
     public Task(String name, String details, String category) {
         this.name = name;
         this.details = details;
         this.category = category;
+        this.status = false;
 //        this.dueDate = dueDate;
     }
 
-    public Task(Integer id, String name, String details, String category) {
+    public Task(Integer id, String name, String details, String category, Boolean status) {
         this.id = id;
         this.name = name;
         this.details = details;
         this.category = category;
+        this.status = false;
 //        this.dueDate = dueDate;
     }
 
@@ -51,6 +54,10 @@ public class Task {
         return category;
     }
 
+    public Boolean getStatus() {
+        return status;
+    }
+
     public void setName(String name) {
         this.name = name;
     }
@@ -63,10 +70,8 @@ public class Task {
         this.category = category;
     }
 
-    public void editTask(String name, String details, String category){
-        this.name = name;
-        this.details = details;
-        this.category = category;
+    public void setStatus(Boolean status) {
+        this.status = status;
     }
 
     //    public String getDueDate() {

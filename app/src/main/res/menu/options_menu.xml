@@ -5,10 +5,10 @@
 
     <item
         android:id="@+id/task_list"
-        android:icon="@drawable/list"
+        android:icon="@drawable/task_list"
         android:title="Task List" />
     <item
         android:id="@+id/add_task"
-        android:icon="@drawable/plus"
-        android:title="Add New Task" />
+        android:icon="@drawable/add_task"
+        android:title="Add Task" />
 </menu>
