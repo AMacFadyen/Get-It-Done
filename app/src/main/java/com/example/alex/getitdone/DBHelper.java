@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 
+import static android.R.attr.category;
 import static android.R.attr.id;
 import static android.R.attr.name;
 import static android.os.Build.VERSION_CODES.O;
@@ -53,7 +54,7 @@ public class DBHelper extends SQLiteOpenHelper{
     public ArrayList<Task> all(){
         ArrayList<Task> tasks = new ArrayList<>();
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.rawQuery("SELECT * FROM " + TASKS_TABLE_NAME, null);
+        Cursor cursor = db.rawQuery("SELECT * FROM " + TASKS_TABLE_NAME + " ORDER BY " + TASKS_COLUMN_CATEGORY, null);
 
         while(cursor.moveToNext())
         {
@@ -76,12 +77,16 @@ public class DBHelper extends SQLiteOpenHelper{
         db.delete(TASKS_TABLE_NAME, selection, values);
     }
 
-//    public void update(Integer id){
-//        SQLiteDatabase db = this.getWritableDatabase();
-//        String selected = " id=?";
-//        String[] values = {id.toString()};
-//        db.update(TASKS_TABLE_NAME, selected, values);
-//    }
+    public void update(Integer id, String name, String details, String category){
+        SQLiteDatabase db = this.getWritableDatabase();
+        String selected = " id=?";
+        String[] values = {id.toString()};
+        ContentValues cv = new ContentValues();
+        cv.put(TASKS_COLUMN_NAME, name);
+        cv.put(TASKS_COLUMN_DETAILS, details);
+        cv.put(TASKS_COLUMN_CATEGORY, category);
+        db.update(TASKS_TABLE_NAME, cv, selected, values);
+    }
 
 
 

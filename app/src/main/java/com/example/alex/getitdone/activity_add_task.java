@@ -17,9 +17,9 @@ public class activity_add_task extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_task);
-        nameText = (EditText)findViewById(R.id.taskNameInput);
-        categoryText = (EditText)findViewById(R.id.taskCategoryInput);
-        detailsText = (EditText)findViewById(R.id.taskDetailsInput);
+        nameText = (EditText)findViewById(R.id.newTaskNameInput);
+        categoryText = (EditText)findViewById(R.id.newTaskCategoryInput);
+        detailsText = (EditText)findViewById(R.id.newTaskDetailsInput);
     }
 
     public void addTask(View button){

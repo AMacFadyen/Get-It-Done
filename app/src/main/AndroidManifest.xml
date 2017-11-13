@@ -18,7 +18,8 @@
         </activity>
         <activity android:name=".TasksListActivity" />
         <activity android:name=".TaskActivity" />
-        <activity android:name=".activity_add_task"></activity>
+        <activity android:name=".activity_add_task" />
+        <activity android:name=".activity_edit_task"></activity>
     </application>
 
 </manifest>
