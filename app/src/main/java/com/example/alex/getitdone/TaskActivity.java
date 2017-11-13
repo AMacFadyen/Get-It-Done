@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import static android.R.attr.id;
+import static android.R.attr.name;
 import static android.R.attr.start;
 
 public class TaskActivity extends AppCompatActivity {
@@ -19,6 +20,11 @@ public class TaskActivity extends AppCompatActivity {
     TextView detailsText;
     TextView categoryText;
     Bundle extras;
+    String name;
+    String details;
+    String category;
+    Integer id;
+
 
 
     @Override
@@ -27,9 +33,10 @@ public class TaskActivity extends AppCompatActivity {
         setContentView(R.layout.activity_task);
 
         extras = getIntent().getExtras();
-        String name = extras.getString("name");
-        String details = extras.getString("details");
-        String category = extras.getString("category");
+        id = extras.getInt("id");
+        name = extras.getString("name");
+        details = extras.getString("details");
+        category = extras.getString("category");
 
         nameText = (TextView)findViewById(R.id.taskNameDisplay);
         nameText.setText(name);
@@ -68,6 +75,12 @@ public class TaskActivity extends AppCompatActivity {
 
     public void editTask(View button){
         Intent i = new Intent(this, activity_edit_task.class);
+        Integer id = extras.getInt("id");
+        i.putExtra("details", details);
+        i.putExtra("category", category);
+        i.putExtra("name", name);
+        i.putExtra("id", id);
+
         startActivity(i);
     }
 

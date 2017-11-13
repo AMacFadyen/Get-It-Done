@@ -8,6 +8,7 @@ import android.widget.EditText;
 
 import static android.R.attr.id;
 
+
 public class activity_edit_task extends AppCompatActivity {
 
     EditText updateName;
@@ -26,12 +27,17 @@ public class activity_edit_task extends AppCompatActivity {
 
     public void updateTask(View button){
         DBHelper dbHelper = new DBHelper(this);
-
         String name = updateName.getText().toString();
         String category = updateCategory.getText().toString();
         String details = updateDetails.getText().toString();
+        int id = getIntent().getExtras().getInt("id");
         dbHelper.update(id, name, details, category);
+
         Intent i = new Intent(this, TaskActivity.class);
+        i.putExtra("id", id);
+        i.putExtra("name", name);
+        i.putExtra("details", details);
+        i.putExtra("category", category);
         startActivity(i);
     }
 }

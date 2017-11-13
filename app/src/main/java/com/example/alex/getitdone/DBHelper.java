@@ -79,13 +79,15 @@ public class DBHelper extends SQLiteOpenHelper{
 
     public void update(Integer id, String name, String details, String category){
         SQLiteDatabase db = this.getWritableDatabase();
-        String selected = " id=?";
-        String[] values = {id.toString()};
         ContentValues cv = new ContentValues();
         cv.put(TASKS_COLUMN_NAME, name);
         cv.put(TASKS_COLUMN_DETAILS, details);
         cv.put(TASKS_COLUMN_CATEGORY, category);
-        db.update(TASKS_TABLE_NAME, cv, selected, values);
+
+        String selection = " id=?";
+        String[] values = new String[] {String.valueOf(id)};
+
+        db.update(TASKS_TABLE_NAME, cv, selection, values);
     }
 
 
