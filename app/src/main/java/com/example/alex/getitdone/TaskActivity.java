@@ -18,6 +18,7 @@ import static android.R.attr.start;
 
 public class TaskActivity extends AppCompatActivity {
 
+    Task task;
     TextView nameText;
     TextView detailsText;
     TextView categoryText;
@@ -36,12 +37,18 @@ public class TaskActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_task);
 
+
         extras = getIntent().getExtras();
         id = extras.getInt("id");
-        name = extras.getString("name");
-        details = extras.getString("details");
-        category = extras.getString("category");
-        status = extras.getBoolean("status");
+
+        DBHelper dbHelper = new DBHelper(this);
+
+
+        task = dbHelper.findById(id);
+        name = task.getName();
+        details = task.getDetails();
+        category = task.getCategory();
+        status = task.getStatus();
 
         nameText = (TextView)findViewById(R.id.taskNameDisplay);
         nameText.setText(name);
@@ -50,8 +57,7 @@ public class TaskActivity extends AppCompatActivity {
         categoryText = (TextView)findViewById(R.id.taskCategoryDisplay);
         categoryText.setText(category);
         taskCompleteBox = (CheckBox) findViewById(R.id.checkBox);
-        taskCompleteBox.setClickable(false);
-
+        taskCompleteBox.setChecked(status);
     }
 
     @Override
@@ -84,12 +90,12 @@ public class TaskActivity extends AppCompatActivity {
     public void onCheckBoxClick(View button){
         DBHelper dbHelper = new DBHelper(this);
         boolean boxStatus = ((CheckBox) button).isChecked();
-        if(!boxStatus){
-            this.status = true;
-        } else {
-            this.status = false;
+        if(boxStatus){
+            task.setStatus(true);
+        }else{
+            task.setStatus(false);
         }
-        dbHelper.update(id, name, details, category, status);
+        dbHelper.update(id, name, details, category, task.getStatus());
     }
 
     public void editTask(View button){

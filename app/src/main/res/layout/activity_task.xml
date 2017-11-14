@@ -73,16 +73,15 @@
 
     <CheckBox
         android:id="@+id/checkBox"
-        android:layout_width="236dp"
-        android:layout_height="115dp"
-        android:layout_marginBottom="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="35dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
-        android:checked="false"
         android:onClick="onCheckBoxClick"
-        android:text="Task complete"
-        android:textAlignment="center"
-        android:textSize="30sp"
+        android:text="Task Complete"
+        android:textSize="28sp"
+        android:background="@color/emerald"
         app:layout_constraintBottom_toTopOf="@+id/button"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent" />

@@ -53,6 +53,20 @@ public class DBHelper extends SQLiteOpenHelper{
         return true;
     }
 
+    public Task findById(Integer id){
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor =  db.rawQuery("SELECT * FROM " + TASKS_TABLE_NAME + " WHERE " + TASKS_COLUMN_ID + " = " + id.toString(), null);
+        cursor.moveToFirst();
+        String name = cursor.getString(cursor.getColumnIndex(TASKS_COLUMN_NAME));
+        String details = cursor.getString(cursor.getColumnIndex(TASKS_COLUMN_DETAILS));
+        String category = cursor.getString(cursor.getColumnIndex(TASKS_COLUMN_CATEGORY));
+        Boolean status = cursor.getInt(cursor.getColumnIndex(TASKS_COLUMN_STATUS))>0;
+        Task task = new Task(id, name, details, category, status);
+        cursor.close();
+        return task;
+    }
+
+
     public ArrayList<Task> all(){
         ArrayList<Task> tasks = new ArrayList<>();
         SQLiteDatabase db = this.getReadableDatabase();
