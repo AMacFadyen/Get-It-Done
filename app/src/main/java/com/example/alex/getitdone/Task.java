@@ -34,7 +34,7 @@ public class Task {
         this.name = name;
         this.details = details;
         this.category = category;
-        this.status = false;
+        this.status = status;
 //        this.dueDate = dueDate;
     }
 

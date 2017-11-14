@@ -42,7 +42,8 @@ public class activity_edit_task extends AppCompatActivity {
         String category = updateCategory.getText().toString();
         String details = updateDetails.getText().toString();
         int id = getIntent().getExtras().getInt("id");
-        dbHelper.update(id, name, details, category);
+        Boolean status = getIntent().getExtras().getBoolean("status");
+        dbHelper.update(id, name, details, category, status);
 
         Intent i = new Intent(this, TaskActivity.class);
         i.putExtra("id", id);

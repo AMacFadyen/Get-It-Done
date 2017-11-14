@@ -8,8 +8,10 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.TextView;
 
+import static android.R.attr.checked;
 import static android.R.attr.id;
 import static android.R.attr.name;
 import static android.R.attr.start;
@@ -19,11 +21,13 @@ public class TaskActivity extends AppCompatActivity {
     TextView nameText;
     TextView detailsText;
     TextView categoryText;
+    CheckBox taskCompleteBox;
     Bundle extras;
     String name;
     String details;
     String category;
     Integer id;
+    Boolean status;
 
 
 
@@ -37,6 +41,7 @@ public class TaskActivity extends AppCompatActivity {
         name = extras.getString("name");
         details = extras.getString("details");
         category = extras.getString("category");
+        status = extras.getBoolean("status");
 
         nameText = (TextView)findViewById(R.id.taskNameDisplay);
         nameText.setText(name);
@@ -44,6 +49,9 @@ public class TaskActivity extends AppCompatActivity {
         detailsText.setText(details);
         categoryText = (TextView)findViewById(R.id.taskCategoryDisplay);
         categoryText.setText(category);
+        taskCompleteBox = (CheckBox) findViewById(R.id.checkBox);
+        taskCompleteBox.setClickable(false);
+
     }
 
     @Override
@@ -71,6 +79,17 @@ public class TaskActivity extends AppCompatActivity {
         dbHelper.delete(id);
         Intent intent = new Intent(this, TasksListActivity.class);
         startActivity(intent);
+    }
+
+    public void onCheckBoxClick(View button){
+        DBHelper dbHelper = new DBHelper(this);
+        boolean boxStatus = ((CheckBox) button).isChecked();
+        if(!boxStatus){
+            this.status = true;
+        } else {
+            this.status = false;
+        }
+        dbHelper.update(id, name, details, category, status);
     }
 
     public void editTask(View button){

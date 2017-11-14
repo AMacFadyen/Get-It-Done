@@ -42,7 +42,7 @@ public class DBHelper extends SQLiteOpenHelper{
         onCreate(db);
     }
 
-    public boolean save(String name, String details, String category, String status){
+    public boolean save(String name, String details, String category, Boolean status){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
         cv.put(TASKS_COLUMN_NAME, name);

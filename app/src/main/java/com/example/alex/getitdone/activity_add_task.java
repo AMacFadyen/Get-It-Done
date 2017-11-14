@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.EditText;
 
 public class activity_add_task extends AppCompatActivity {
@@ -27,7 +28,7 @@ public class activity_add_task extends AppCompatActivity {
         String name = nameText.getText().toString();
         String details = detailsText.getText().toString();
         String category = categoryText.getText().toString();
-        dbHelper.save(name, details, category);
+        dbHelper.save(name, details, category, false);
         Intent i = new Intent(this, TasksListActivity.class);
         startActivity(i);
         }
