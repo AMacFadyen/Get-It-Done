@@ -10,6 +10,8 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+import static android.R.attr.id;
+
 /**
  * Created by Alex on 10/11/2017.
  */

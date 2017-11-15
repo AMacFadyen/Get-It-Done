@@ -24,9 +24,7 @@
         android:textSize="26sp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="TaskName"
-        app:layout_constraintRight_toLeftOf="@+id/taskCompleteCheckBox"
-        android:layout_marginRight="8dp" />
+        tools:text="TaskName" />
 
     <TextView
         android:id="@+id/taskDetails"
@@ -39,19 +37,6 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/taskName"
         tools:text="Details" />
-
-    <CheckBox
-        android:id="@+id/taskCompleteCheckBox"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:checked="false"
-        android:fontFamily="sans-serif"
-        android:text="Task Complete"
-        android:textColorLink="@android:color/black"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginRight="8dp"
-        app:layout_constraintRight_toRightOf="parent" />
 
     <TextView
         android:id="@+id/taskCategory"

@@ -51,6 +51,7 @@ public class TasksListActivity extends AppCompatActivity {
         i.putExtra("details", task.getDetails());
         i.putExtra("category", task.getCategory());
         i.putExtra("id", task.getId());
+        i.putExtra("status", task.getStatus());
         startActivity(i);
     }
 
